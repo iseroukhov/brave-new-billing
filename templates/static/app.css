@@ -1,0 +1,131 @@
+* {
+    outline: none !important;
+}
+
+body {
+    font-size: 13px;
+    font-family: Verdana, sans-serif;
+    color: #444;
+}
+
+.payment-purpose {
+    text-align: center;
+    color: #8a8a8a;
+    margin-top: 100px;
+}
+
+.payment-purpose span {
+    color: #444;
+}
+
+form {
+    max-width: 400px;
+    margin: 30px auto 50px auto;
+    border: 1px solid #dcdcdc;
+}
+
+form .form-item {
+    padding: 10px 10px;
+    border-bottom: 1px solid #dcdcdc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form .form-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+form .form-footer .form-amount {
+}
+
+form .form-footer .form-button button {
+    border: 1px solid #ff8181;
+    background-color: #ff8181;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 175px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+form .form-footer .form-button button:hover,
+form .form-footer .form-button button:focus {
+    border: 1px solid #fd6666;
+    background-color: #fd6666;
+    cursor: pointer;
+}
+
+form .form-item input[type="text"],
+form .form-item input[type="password"] {
+    padding: 5px 10px;
+    width: 150px;
+}
+
+#cvc {
+    width: 60px;
+}
+
+form .form-item.expiry input[type="text"] {
+    padding: 5px 10px;
+    width: 60px;
+}
+
+form .form-item.expiry input[type="text"]:first-child {
+    margin-right: 5px;
+}
+
+#countdown {
+    text-align: center;
+}
+
+.payment-error {
+    width: 320px;
+    border: 2px solid #fd6666;
+    margin: 50px auto;
+}
+
+.payment-error .payment-error_header {
+    padding: 15px;
+    background-color: #fd6666;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.payment-error .payment-error_text {
+    padding: 15px;
+}
+
+.payment-success {
+    width: 320px;
+    border: 2px solid #66fdaf;
+    margin: 50px auto;
+}
+
+.payment-success .payment-success_text {
+    padding: 15px;
+    background-color: #66fdaf;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.page-not-found {
+    width: 320px;
+    border: 2px solid #e6e6e6;
+    margin: 50px auto;
+}
+
+.page-not-found_text {
+    padding: 15px;
+    background-color: #e6e6e6;
+    color: #7d7d7d;
+    font-weight: bold;
+    text-align: center;
+}

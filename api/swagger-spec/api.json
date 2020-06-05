@@ -1,0 +1,197 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Тестовое задание",
+        "description": "Тестовое задание для backend-стажёра в юнит Billing",
+        "contact": {
+            "name": "Игорь С.",
+            "email": "i.seroukhov@gmail.com"
+        }
+    },
+    "host": "localhost:9000",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/register": {
+            "post": {
+                "operationId": "registerOrder",
+                "description": "Запрос регистрации заказа",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "description": "Сумма платежа",
+                        "in": "query",
+                        "required": true,
+                        "type": "float"
+                    },
+                    {
+                        "name": "payment_purpose",
+                        "description": "Назначение платежа",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "uid",
+                                "formUrl"
+                            ],
+                            "properties": {
+                                "uid": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                },
+                                "formUrl": {
+                                    "type": "string",
+                                    "description": "Ссылка на форму оплаты"
+                                },
+                                "errorInfo": {
+                                    "type": "null"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "uid",
+                                "errorInfo"
+                            ],
+                            "properties": {
+                                "uid": {
+                                    "type": "string",
+                                    "default": "00000000-0000-0000-0000-000000000000"
+                                },
+                                "formUrl": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "errorInfo": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "uid",
+                                "errorInfo"
+                            ],
+                            "properties": {
+                                "uid": {
+                                    "type": "string",
+                                    "default": "00000000-0000-0000-0000-000000000000"
+                                },
+                                "formUrl": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "errorInfo": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "default": "internal server error"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/payments": {
+            "get": {
+                "operationId": "getPayments",
+                "description": "Получение всех платежей",
+                "parameters": [
+                    {
+                        "name": "from",
+                        "description": "Период (от)",
+                        "in": "query",
+                        "type": "datetime",
+                        "format": "YYYY-MM-DDTHH:II:SSZ"
+                    },
+                    {
+                        "name": "to",
+                        "description": "Период (до)",
+                        "in": "query",
+                        "type": "datetime",
+                        "format": "YYYY-MM-DDTHH:II:SSZ"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "uid": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "amount": {
+                                        "type": "float",
+                                        "description": "Сумма платежа"
+                                    },
+                                    "purpose": {
+                                        "type": "string",
+                                        "description": "Назначение платежа"
+                                    },
+                                    "created_at": {
+                                        "type": "datetime",
+                                        "format": "YYYY-MM-DDTHH:II:SSZ",
+                                        "description": "Дата создания"
+                                    }
+                                }
+                            },
+                            "properties": {
+                                "uid": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                },
+                                "formUrl": {
+                                    "type": "string"
+                                },
+                                "errorInfo": {
+                                    "type": "null"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {}
+                    }
+                }
+            }
+        }
+    }
+}

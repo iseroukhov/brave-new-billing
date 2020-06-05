@@ -1,0 +1,18 @@
+server:
+    port: ":9000"
+
+logger:
+    level: "info"
+
+db:
+    driver: "mysql"
+    host: "mysql"
+    user: "root"
+    password: "root"
+    database: "billing"
+    port: 3306
+
+queue:
+    network: "tcp"
+    host: "redis"
+    port: 6379
